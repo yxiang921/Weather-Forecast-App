@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'screens/home_page.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: '.env');
   runApp(const MyApp());
 }
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Weather App',
       debugShowCheckedModeBanner: false,
-      color: Color.fromARGB(255, 72,174,255),
+      color: Color.fromARGB(255, 72, 174, 255),
       home: HomePage(),
     );
   }

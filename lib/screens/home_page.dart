@@ -22,8 +22,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _weather = _weatherService.fetchWeatherApi('Skudai');
-    _hourlyWeather = _weatherService.fetchHourlyWeather('Skudai');
+    _weather = _weatherService.fetchWeatherApi();
+    _hourlyWeather = _weatherService.fetchHourlyWeather();
   }
 
   @override
@@ -36,15 +36,6 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: const Color.fromARGB(255, 72, 174, 255),
         centerTitle: true,
-        actions: [
-          IconButton(
-            color: Colors.white,
-            onPressed: () {
-              print("Refresh");
-            },
-            icon: const Icon(Icons.refresh),
-          )
-        ],
       ),
       body: FutureBuilder(
         future: _weather,

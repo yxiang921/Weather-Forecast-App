@@ -1,19 +1,27 @@
 import 'dart:convert';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+
 import 'package:weather_app/models/hourly_weather_model.dart';
 import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/services/get_location.dart';
 
 class WeatherService {
-  final String apiKey = 'ec18c3f6cc7f715638bfbd94e1ef9cfd';
+  final String apiKey = dotenv.env['API_KEY'] ?? '';
   final String apiUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 
-  Future<Weather> fetchWeatherApi(String city) async {
-    print('API LINK: $apiUrl?q=$city&appid=$apiKey&units=metric');
+  Future<Weather> fetchWeatherApi() async {
+    LocationService locationService = LocationService();
+    final position = await locationService.getCurrentLocation();
+    print('Location: ${position.latitude}, ${position.longitude}');
 
     final reponses = await http.get(
-      Uri.parse('$apiUrl?q=$city&appid=$apiKey&units=metric'),
+      Uri.parse(
+          '$apiUrl?appid=$apiKey&units=metric&lat=${position.latitude}&lon=${position.longitude}'),
     );
+
+    print(
+        "URL: $apiUrl?appid=$apiKey&units=metric&lat=${position.latitude}&lon=${position.longitude}");
 
     if (reponses.statusCode == 200) {
       print('API RESPONSE: ${reponses.body}');
@@ -23,9 +31,12 @@ class WeatherService {
     }
   }
 
-  Future<List<HourlyWeather>> fetchHourlyWeather(String city) async {
+  Future<List<HourlyWeather>> fetchHourlyWeather() async {
+    LocationService locationService = LocationService();
+    final position = await locationService.getCurrentLocation();
     final reponses = await http.get(
-      Uri.parse('$apiUrl?q=$city&appid=$apiKey&units=metric'),
+      Uri.parse(
+          '$apiUrl?appid=$apiKey&units=metric&lat=${position.latitude}&lon=${position.longitude}'),
     );
 
     if (reponses.statusCode == 200) {

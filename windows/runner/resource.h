@@ -1,4 +1,4 @@
-//{{NO_DEPENDENCIES}}
+git push -u origin main//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by Runner.rc
 //
