@@ -11,4 +11,4 @@ This app highlights my ability to integrate external APIs, manage state efficien
 - API: Open Weather API
 
 ## Screenshot
-![App Screenshot](https://github.com/yxiang921/Weather-Forecast-App/blob/main/screenshot.png)
+<img src="https://github.com/yxiang921/Weather-Forecast-App/blob/main/screenshot.png" alt="" width="340px">
