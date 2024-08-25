@@ -10,3 +10,5 @@ This app highlights my ability to integrate external APIs, manage state efficien
 - Langauge: Flutter
 - API: Open Weather API
 
+## Screenshot
+![App Screenshot](https://github.com/yxiang921/Weather-Forecast-App/blob/main/screenshot.png)
